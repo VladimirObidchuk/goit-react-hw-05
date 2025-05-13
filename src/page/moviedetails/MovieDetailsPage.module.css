@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.blokInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.leftSide {
+}
+.img {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}
+.rightSide {
+  color: #000;
+}
+.subList {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  list-style: none;
+}

@@ -21,11 +21,8 @@ const HomePage = () => {
   return (
     <div className={style}>
       <h2 className={style.title}>Trending Today</h2>
-      <ul className={style.content}>
-        {collection.map((film, index) => {
-          return <MovieList key={index} film={film} />;
-        })}
-      </ul>
+
+      {collection.length > 0 && <MovieList collection={collection} />}
     </div>
   );
 };

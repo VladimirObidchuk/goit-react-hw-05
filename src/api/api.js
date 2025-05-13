@@ -12,3 +12,31 @@ export const fetchMoviesPerDay = async () => {
   });
   return fethMoviesFavoriteDay;
 };
+
+export const fetchMovieById = async (movieId) => {
+  const fetchMovie = axios.get(`/movie/${movieId}`, {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  });
+  return fetchMovie;
+};
+export const fetchMovieReviewsById = async (movieId) => {
+  const fetchMovie = axios.get(`/movie/${movieId}/reviews`, {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  });
+  return fetchMovie;
+};
+export const fetchImgMoviePath = async () => {
+  const fetchImgMovie = axios.get("/configuration", {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  });
+  return fetchImgMovie;
+};

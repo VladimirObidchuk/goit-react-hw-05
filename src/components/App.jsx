@@ -16,7 +16,7 @@ export default function App() {
     <div className={style.container}>
       <Navigation />
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
           <Route path="cast" element={<MovieCast />} />
