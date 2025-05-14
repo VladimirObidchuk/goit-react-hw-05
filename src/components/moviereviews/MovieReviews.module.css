@@ -1,3 +1,11 @@
 .container {
   color: #000;
 }
+.list {
+  padding: 0 32px;
+}
+.item img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+}

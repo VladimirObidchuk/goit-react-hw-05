@@ -22,8 +22,8 @@ export const fetchMovieById = async (movieId) => {
   });
   return fetchMovie;
 };
-export const fetchMovieReviewsById = async (movieId) => {
-  const fetchMovie = axios.get(`/movie/${movieId}/reviews`, {
+export const fetchCreditsForMovie = async (movieId) => {
+  const fetchMovie = axios.get(`/movie/${movieId}?append_to_response=credits`, {
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${apiKey}`,
@@ -40,3 +40,17 @@ export const fetchImgMoviePath = async () => {
   });
   return fetchImgMovie;
 };
+export const fetchReviewsForMovie = async (movieId) => {
+  const fetchImgMovie = axios.get(
+    `/movie/${movieId}?append_to_response=reviews`,
+    {
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+    }
+  );
+  return fetchImgMovie;
+};
+
+//'https://api.themoviedb.org/3/movie/11?append_to_response=videos,images' \

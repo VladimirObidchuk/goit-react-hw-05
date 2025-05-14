@@ -1,0 +1,22 @@
+.container {
+  color: #000;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  width: calc((100% - 16px) / 2);
+}
+.blockImage {
+}
+.item img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+}

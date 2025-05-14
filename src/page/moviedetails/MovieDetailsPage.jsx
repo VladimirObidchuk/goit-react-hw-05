@@ -1,7 +1,11 @@
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import style from "./MovieDetailsPage.module.css";
-import { useEffect, useRef, useState } from "react";
-import { fetchImgMoviePath, fetchMovieById } from "../../api/api";
+import { useEffect, useState } from "react";
+import {
+  //   fetchAllFdorMovie,
+  fetchImgMoviePath,
+  fetchMovieById,
+} from "../../api/api";
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -9,9 +13,7 @@ const MovieDetailsPage = () => {
   const [posterUrl, setPosterUrl] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(" location", location);
   const backLink = location.state ?? "/movies";
-  console.log(" backLink", backLink);
   useEffect(() => {
     if (!movieId) return;
     async function fetchDetailesMovie() {
@@ -30,15 +32,14 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   useEffect(() => {
-    if (!movie && !movieImd) {
-      return;
-    } else {
+    if (movie && movieImd) {
       const posterSize = "w500";
       const url = `${movieImd.secure_base_url}${posterSize}${movie.poster_path}`;
-      setPosterUrl(url);
+
+      return setPosterUrl(url);
     }
   }, [movie, movieImd]);
-  console.log(" movie", movie);
+
   return (
     <div className={style.container}>
       <NavLink to={backLink}>Go back</NavLink>
