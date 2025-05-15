@@ -45,7 +45,7 @@ const MovieCast = () => {
     <div className={style.container}>
       {loading && <strong>Loading posts...</strong>}
       <ul className={style.list}>
-        {credits ? (
+        {credits.length > 0 ? (
           credits.map(({ id, name, character, profile_path }) => {
             return (
               <li key={id} className={style.item}>

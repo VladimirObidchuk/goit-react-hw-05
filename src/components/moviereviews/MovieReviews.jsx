@@ -47,7 +47,7 @@ const MovieReviews = () => {
     <div className={style.container}>
       {loading && <strong>Loading posts...</strong>}
       <ul className={style.list}>
-        {reviews ? (
+        {reviews.length > 0 ? (
           reviews.map(({ id, author, author_details, content }) => {
             return (
               <li key={id} className={style.item}>

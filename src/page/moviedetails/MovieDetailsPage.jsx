@@ -8,6 +8,11 @@ import {
 import style from "./MovieDetailsPage.module.css";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { fetchImgMoviePath, fetchMovieById } from "../../api/api";
+import clsx from "clsx";
+
+const getActiveClassLink = ({ isActive }) => {
+  return clsx(style.link, isActive && style.isActive);
+};
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -43,9 +48,12 @@ const MovieDetailsPage = () => {
     }
   }, [movie, movieImd]);
 
+  console.log(" movie", movie);
   return (
     <div className={style.container}>
-      <Link to={backLink.current}>Go back</Link>
+      <Link to={backLink.current} className={style.backBtn}>
+        Go back
+      </Link>
       <div className={style.blokInfo}>
         <div className={style.leftSide}>
           <img
@@ -72,14 +80,20 @@ const MovieDetailsPage = () => {
           </ul>
         </div>
       </div>
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
+      <div className={style.infoBlock}>
+        <ul>
+          <li>
+            <NavLink to="cast" className={getActiveClassLink}>
+              Cast
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="reviews" className={getActiveClassLink}>
+              Reviews
+            </NavLink>
+          </li>
+        </ul>
+      </div>
       <Suspense>
         <Outlet />
       </Suspense>
