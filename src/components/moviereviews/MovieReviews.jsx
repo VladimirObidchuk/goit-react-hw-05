@@ -18,7 +18,6 @@ const MovieReviews = () => {
     async function fetchMovieReviews() {
       try {
         setLoading(true);
-        // const res = await fetchReviewsForMovie(movieId);
 
         const [detailsReviews, reviewsImgPath] = await Promise.all([
           fetchReviewsForMovie(movieId),
@@ -43,7 +42,6 @@ const MovieReviews = () => {
       return setPosterUrl(url);
     }
   }, [reviews, reviewsImg]);
-  console.log("reviews", reviews);
 
   return (
     <div className={style.container}>

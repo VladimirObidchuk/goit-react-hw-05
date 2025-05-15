@@ -19,9 +19,8 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className={style}>
+    <div className={style.container}>
       <h2 className={style.title}>Trending Today</h2>
-
       {collection.length > 0 && <MovieList collection={collection} />}
     </div>
   );

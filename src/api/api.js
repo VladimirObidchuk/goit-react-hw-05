@@ -13,6 +13,20 @@ export const fetchMoviesPerDay = async () => {
   return fethMoviesFavoriteDay;
 };
 
+export const fetchMovies = async (value) => {
+  const fetchMoviesSearch = axios.get("/search/movie", {
+    params: {
+      query: value,
+    },
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${apiKey}`,
+    },
+  });
+  console.log(" fetchMoviesSearch", fetchMoviesSearch.data);
+  return fetchMoviesSearch;
+};
+
 export const fetchMovieById = async (movieId) => {
   const fetchMovie = axios.get(`/movie/${movieId}`, {
     headers: {
@@ -52,5 +66,3 @@ export const fetchReviewsForMovie = async (movieId) => {
   );
   return fetchImgMovie;
 };
-
-//'https://api.themoviedb.org/3/movie/11?append_to_response=videos,images' \

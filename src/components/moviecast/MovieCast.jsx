@@ -41,8 +41,6 @@ const MovieCast = () => {
     }
   }, [credits, castImg]);
 
-  console.log(" posterUrl", posterUrl);
-  console.log(" credits", credits);
   return (
     <div className={style.container}>
       {loading && <strong>Loading posts...</strong>}

@@ -1,11 +1,13 @@
-import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import style from "./MovieDetailsPage.module.css";
-import { useEffect, useState } from "react";
 import {
-  //   fetchAllFdorMovie,
-  fetchImgMoviePath,
-  fetchMovieById,
-} from "../../api/api";
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from "react-router-dom";
+import style from "./MovieDetailsPage.module.css";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { fetchImgMoviePath, fetchMovieById } from "../../api/api";
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -13,7 +15,8 @@ const MovieDetailsPage = () => {
   const [posterUrl, setPosterUrl] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLink = location.state ?? "/movies";
+  const backLink = useRef(location.state ?? "/movies");
+
   useEffect(() => {
     if (!movieId) return;
     async function fetchDetailesMovie() {
@@ -42,7 +45,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={style.container}>
-      <NavLink to={backLink}>Go back</NavLink>
+      <Link to={backLink.current}>Go back</Link>
       <div className={style.blokInfo}>
         <div className={style.leftSide}>
           <img
@@ -77,7 +80,9 @@ const MovieDetailsPage = () => {
           <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

@@ -1,6 +1,28 @@
-.link {
-  text-decoration: underline;
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
 }
-.item::marker {
-  color: black;
+.link {
+  display: block;
+  text-decoration: underline;
+  padding: 5px;
+  text-decoration: none;
+  color: #397970;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  width: calc((100% - 24px) / 4);
+  border: 2px solid #5c48da;
+}
+.item:hover .link {
+  color: #ffffff;
+}
+.item:hover {
+  border: none;
+  background-color: #397970;
 }
