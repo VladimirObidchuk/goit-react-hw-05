@@ -22,6 +22,9 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const backLink = useRef(location.state ?? "/movies");
 
+  const defaultImg =
+    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
   useEffect(() => {
     if (!movieId) return;
     async function fetchDetailesMovie() {
@@ -56,7 +59,7 @@ const MovieDetailsPage = () => {
       <div className={style.blokInfo}>
         <div className={style.leftSide}>
           <img
-            src={posterUrl}
+            src={movie?.poster_path ? posterUrl : defaultImg}
             alt={movie?.title || "Movie Poster"}
             width={500}
             className={style.img}
