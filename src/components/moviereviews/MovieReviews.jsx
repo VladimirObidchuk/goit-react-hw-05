@@ -45,30 +45,34 @@ const MovieReviews = () => {
 
   return (
     <div className={style.container}>
-      {loading && <strong>Loading posts...</strong>}
-      <ul className={style.list}>
-        {reviews.length > 0 ? (
-          reviews.map(({ id, author, author_details, content }) => {
-            return (
-              <li key={id} className={style.item}>
-                <img
-                  src={
-                    author_details.avatar_path !== null
-                      ? `${posterUrl}${author_details.avatar_path}`
-                      : defaultImg
-                  }
-                  alt={author}
-                  width={250}
-                />
-                <h3 className={style.title}>{author}</h3>
-                <p className={style.text}>{content}</p>
-              </li>
-            );
-          })
-        ) : (
-          <strong>We don't have any reviews for this movie</strong>
-        )}
-      </ul>
+      {loading ? (
+        <strong>Loading posts...</strong>
+      ) : (
+        <ul className={style.list}>
+          {reviews && reviews.length > 0 ? (
+            reviews.map(({ id, author, author_details, content }) => {
+              return (
+                <li key={id} className={style.item}>
+                  <h3 className={style.title}>{author}</h3>
+                  <img
+                    src={
+                      author_details.avatar_path !== null
+                        ? `${posterUrl}${author_details.avatar_path}`
+                        : defaultImg
+                    }
+                    alt={author}
+                    width={250}
+                    className={style.img}
+                  />
+                  <p className={style.text}>{content}</p>
+                </li>
+              );
+            })
+          ) : (
+            <strong>We don't have any reviews for this movie</strong>
+          )}
+        </ul>
+      )}
     </div>
   );
 };

@@ -60,12 +60,7 @@ const MoviesPage = () => {
         validationSchema={searchValueSchema}
       >
         <Form>
-          <Field
-            type="text"
-            className={style.input}
-            name="search"
-            // value={query}
-          />
+          <Field type="text" className={style.input} name="search" />
           <button type="submit">Search</button>
         </Form>
       </Formik>

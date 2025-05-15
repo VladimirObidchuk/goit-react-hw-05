@@ -48,7 +48,6 @@ const MovieDetailsPage = () => {
     }
   }, [movie, movieImd]);
 
-  console.log(" movie", movie);
   return (
     <div className={style.container}>
       <Link to={backLink.current} className={style.backBtn}>
@@ -81,13 +80,14 @@ const MovieDetailsPage = () => {
         </div>
       </div>
       <div className={style.infoBlock}>
-        <ul>
-          <li>
+        <h3 className={style.additionTitle}>Additional information</h3>
+        <ul className={style.additionList}>
+          <li className={style.additionItem}>
             <NavLink to="cast" className={getActiveClassLink}>
               Cast
             </NavLink>
           </li>
-          <li>
+          <li className={style.additionItem}>
             <NavLink to="reviews" className={getActiveClassLink}>
               Reviews
             </NavLink>

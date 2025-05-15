@@ -43,32 +43,35 @@ const MovieCast = () => {
 
   return (
     <div className={style.container}>
-      {loading && <strong>Loading posts...</strong>}
-      <ul className={style.list}>
-        {credits.length > 0 ? (
-          credits.map(({ id, name, character, profile_path }) => {
-            return (
-              <li key={id} className={style.item}>
-                <div className={style.blockImage}>
-                  <h3 className={style.title}>{name}</h3>
-                  <p className={style.text}>Character: {character}</p>
-                </div>
-                <img
-                  src={
-                    profile_path !== null
-                      ? `${posterUrl}${profile_path}`
-                      : defaultImg
-                  }
-                  alt={name}
-                  width={250}
-                />
-              </li>
-            );
-          })
-        ) : (
-          <strong>We don't have any reviews for this movie</strong>
-        )}
-      </ul>
+      {loading ? (
+        <strong>Loading posts...</strong>
+      ) : (
+        <ul className={style.list}>
+          {credits && credits.length > 0 ? (
+            credits.map(({ id, name, character, profile_path }) => {
+              return (
+                <li key={id} className={style.item}>
+                  <div className={style.blockImage}>
+                    <h3 className={style.title}>{name}</h3>
+                    <p className={style.text}>Character: {character}</p>
+                  </div>
+                  <img
+                    src={
+                      profile_path !== null
+                        ? `${posterUrl}${profile_path}`
+                        : defaultImg
+                    }
+                    alt={name}
+                    width={250}
+                  />
+                </li>
+              );
+            })
+          ) : (
+            <strong>We don't have any reviews for this movie</strong>
+          )}
+        </ul>
+      )}
     </div>
   );
 };
