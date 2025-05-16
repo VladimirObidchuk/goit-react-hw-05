@@ -14,34 +14,33 @@ const searchValueSchema = Yup.object().shape({
 });
 
 const MoviesPage = () => {
-  const [collection, setCollction] = useState([]);
+  const [collection, setColletion] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
 
-  const handlerSubmit = (value, searchas) => {
+  const handlerSubmit = (value) => {
     const newQuery = value.search;
-    const nextSearchParams = new URLSearchParams(searchParams);
-    if (newQuery !== "") {
+    const nextSearchParams = new URLSearchParams();
+    if (newQuery) {
       nextSearchParams.set("query", newQuery);
     } else {
       nextSearchParams.delete("query");
     }
     setSearchParams(nextSearchParams);
-    searchas.resetForm();
   };
 
   useEffect(() => {
     if (!query) {
+      setColletion([]);
       return;
     }
     async function fetchSearchMovies(query) {
       try {
         setLoading(true);
         const res = await fetchMovies(query);
-        setCollction((prevFilms) => [...prevFilms, ...res.data.results]);
-        console.log(" res", res);
+        setColletion(res.data.results);
       } catch (error) {
         console.log(" error", error);
       } finally {
